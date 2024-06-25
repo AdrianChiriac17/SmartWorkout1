@@ -9,11 +9,39 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
-@code {
-    private int currentCount = 0;
+<Buttons>
+    <Button Color="Color.Secondary" Clicked="@IncrementCount">LEFT</Button>
+    <Button Color="Color.Secondary">CENTER</Button>
+    <Button Color="Color.Secondary">RIGHT</Button>
+</Buttons>
 
-    private void IncrementCount()
-    {
-        currentCount++;
-    }
-}
+<p>
+    <Alert Color="Color.Danger" @bind-Visible="@alertvisible">
+
+        <AlertDescription>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </AlertDescription>
+
+        <AlertMessage>
+            Alert Link.
+        </AlertMessage>
+
+        <CloseButton />
+    </Alert>
+</p>
+
+<Fields>
+    <Field>
+        <FieldLabel> 
+            Type your name
+        </FieldLabel>
+        <FieldBody>
+            <TextEdit @bind-Text="@name"/>
+        </FieldBody>
+    </Field>
+</Fields>
+
+<ShowName input="@name">
+    
+</ShowName>
+

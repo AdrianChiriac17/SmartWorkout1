@@ -1,0 +1,18 @@
+﻿@using SmartWorkout1.Entities
+
+@page "/ExcerciseLogPage"
+
+<h2> Excercise Logs</h2>
+
+<DataGrid TItem="ExcerciseLog"
+          Data="@excerciselogs"
+          Filterable
+          FilterMethod="DataGridFilterMethod.StartsWith"
+          Responsive>
+
+    <DataGridColumn TItem="ExcerciseLog" Field="Excercise.Description" Caption="Exercise Description"> </DataGridColumn>
+    <DataGridColumn TItem="ExcerciseLog" Field="Workout.Name" Caption="Workout Name"> </DataGridColumn>
+    <DataGridColumn TItem="ExcerciseLog" Field="Reps" Caption="Repetitions"> </DataGridColumn>
+    <DataGridColumn TItem="ExcerciseLog" Field="Duration" Caption="Duration"> </DataGridColumn>
+
+</DataGrid>

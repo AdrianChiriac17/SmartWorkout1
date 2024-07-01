@@ -1,0 +1,16 @@
+﻿@using SmartWorkout1.Entities
+
+@page "/ExcercisePage"
+
+<h2> Excercises</h2>
+
+<DataGrid TItem="Excercise"
+          Data="@excercises"
+          Filterable
+          FilterMethod="DataGridFilterMethod.StartsWith"
+          Responsive>
+
+    <DataGridColumn TItem="Excercise" Field="Description" Caption="Exercise Description"> </DataGridColumn>
+    <DataGridColumn TItem="Excercise" Field="Type" Caption="Type"> </DataGridColumn>
+
+</DataGrid>

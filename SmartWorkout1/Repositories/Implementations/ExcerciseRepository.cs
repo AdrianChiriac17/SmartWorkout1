@@ -12,6 +12,12 @@ namespace SmartWorkout1.Repositories.Implementations
             _context = context;
         }
 
+        public void AddExcercise(Excercise excercise)
+        {
+            _context.Excercises.Add(excercise);
+            _context.SaveChanges();
+        }
+
         public ICollection<Excercise> GetExcercises()
         {
             return _context.Excercises.ToList();

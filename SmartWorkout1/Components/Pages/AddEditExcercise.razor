@@ -1,0 +1,34 @@
+﻿using Blazorise;
+using Microsoft.AspNetCore.Components.Forms;
+using System.Collections.Generic;
+
+@using SmartWorkout1.Entities
+@page "/AddEditExcercise"
+<h3>AddOrEdit</h3>
+
+<EditForm Model="@NewExcercise" OnValidSubmit=@SaveExcercise FormName="editForm">
+
+    @* <InputNumber @bind-Value="hidden"></InputNumber> *@
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <div class= "form-group" >
+        < label > Description:</ label >
+        <div >
+            < InputText @bind-Value = "NewExcercise.Description" class= "form-control col-sm-3" />
+            < ValidationMessage For = "@(() => NewExcercise.Description)" />
+        </div >
+    </div >
+
+    <div class= "form-group" >
+        < label > Last Name:</ label >
+        <div>
+            < InputText @bind-Value = "NewExcercise.Type" class= "form-control col-sm-3" />
+            < ValidationMessage For = "@(() => NewExcercise.Type)" />
+        </div >
+    </div >
+
+    <div class= "form-group" >
+        < input type = "submit" class= "btn btn-primary" value = "Save" />
+    
+    </div >
+</EditForm >
+

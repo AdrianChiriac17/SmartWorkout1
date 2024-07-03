@@ -75,7 +75,7 @@ namespace SmartWorkout1.Migrations
                     b.ToTable("ExcerciseLogs");
                 });
 
-            modelBuilder.Entity("SmartWorkout1.Entities.User", b =>
+            modelBuilder.Entity("SmartWorkout1.Entities.UserDTO", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -151,14 +151,14 @@ namespace SmartWorkout1.Migrations
 
             modelBuilder.Entity("SmartWorkout1.Entities.Workout", b =>
                 {
-                    b.HasOne("SmartWorkout1.Entities.User", "User")
+                    b.HasOne("SmartWorkout1.Entities.UserDTO", "UserDTO")
                         .WithMany("Workouts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_Workouts_Users");
 
-                    b.Navigation("User");
+                    b.Navigation("UserDTO");
                 });
 
             modelBuilder.Entity("SmartWorkout1.Entities.Excercise", b =>
@@ -166,7 +166,7 @@ namespace SmartWorkout1.Migrations
                     b.Navigation("ExcerciseLogs");
                 });
 
-            modelBuilder.Entity("SmartWorkout1.Entities.User", b =>
+            modelBuilder.Entity("SmartWorkout1.Entities.UserDTO", b =>
                 {
                     b.Navigation("Workouts");
                 });

@@ -1,4 +1,5 @@
-﻿using SmartWorkout1.Entities;
+﻿using SmartWorkout1.DTOs;
+using SmartWorkout1.Entities;
 
 namespace SmartWorkout1.Repositories.Interfaces
 {
@@ -7,5 +8,7 @@ namespace SmartWorkout1.Repositories.Interfaces
         ICollection<User> GetUsers();
 
         void AddUser(User user);
+
+        public UserDTO GetById (int UserId);
     }
 }

@@ -2,6 +2,7 @@ using Blazorise;
 using Blazorise.Bootstrap;
 using Blazorise.Icons.FontAwesome;
 using Microsoft.EntityFrameworkCore;
+using SmartWorkout.Repositories.Interfaces;
 using SmartWorkout1.Components;
 using SmartWorkout1.Context;
 using SmartWorkout1.Repositories.Implementations;

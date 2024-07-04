@@ -1,5 +1,6 @@
 ﻿@using SmartWorkout1.Entities
 @rendermode InteractiveServer
+
 @page "/UsersPage"
 
 <h2> Users</h2>
@@ -14,12 +15,20 @@
     <DataGridColumn TItem="User" Field="Birthday" Caption="Birthday"> </DataGridColumn> 
     <DataGridColumn TItem="User" Field="Gender" Caption="Gender"> </DataGridColumn> 
 
-    <DataGridCommandColumn TItem="User">
+    <DataGridCommandColumn TItem="User" Caption="Action" NewCommandAllowed="false">
+
         <EditCommandTemplate>
-            <Button Color="Color.Primary" Clicked="() => EditUser(context)">Edit User</Button>
-        </EditCommandTemplate>
+				<Button Color="Color.Primary" Clicked="() => EditUser(context)">Edit User</Button>
+		</EditCommandTemplate>
+
+
+        <DeleteCommandTemplate>
+            <Button Color="Color.Secondary" Clicked="() => DeleteUser(context)">Delete User</Button>
+        </DeleteCommandTemplate>
+
     </DataGridCommandColumn>
 
-    <Button Color="Color.Primary" Type="ButtonType.Link" To="/user/add">Add User</Button>
 
 </DataGrid>
+
+<Button Color="Color.Primary" Type="ButtonType.Link" To="/user/add">Add User</Button>

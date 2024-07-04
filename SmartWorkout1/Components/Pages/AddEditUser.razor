@@ -1,6 +1,9 @@
 ﻿@using SmartWorkout1.Entities
+@rendermode InteractiveServer
+
 @page "/user/add"
 @page "/user/edit/{UserId:int}"
+
 <h3>AddOrEdit</h3>
 
 <EditForm Model="@UserDTO" OnValidSubmit=@SaveUser FormName="editForm">

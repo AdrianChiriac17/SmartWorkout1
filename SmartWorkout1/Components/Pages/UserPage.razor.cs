@@ -31,6 +31,16 @@ namespace SmartWorkout1.Components.Pages
                 NavigationManager.NavigateTo($"/user/edit/{context.Item.Id}");
             }
         }
+        private void AddWorkout(EditCommandContext<User> context)
+        {
+
+            if (context != null && context.Item != null)
+            {
+                NavigationManager.NavigateTo($"/workout/add/{context.Item.Id}");
+
+            }
+        }
+
 
         private void DeleteUser(DeleteCommandContext<User> context)
         {

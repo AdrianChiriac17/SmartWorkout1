@@ -1,18 +1,37 @@
 ﻿@using SmartWorkout1.Entities
 
 @page "/ExcercisePage"
+@rendermode InteractiveServer
 
 <h2> Excercises</h2>
 
 <DataGrid TItem="Excercise"
           Data="@excercises"
           Filterable
+          Editable
           FilterMethod="DataGridFilterMethod.StartsWith"
           Responsive>
 
     <DataGridColumn TItem="Excercise" Field="Description" Caption="Exercise Description"> </DataGridColumn>
     <DataGridColumn TItem="Excercise" Field="Type" Caption="Type"> </DataGridColumn>
 
+    <DataGridCommandColumn TItem="Excercise" Caption="Action" NewCommandAllowed="false">
+
+        <EditCommandTemplate>
+            <Button Color="Color.Primary" Clicked="() => EditExcercise(context)">Edit Excercise</Button>
+        </EditCommandTemplate>
+
+
+        <DeleteCommandTemplate>
+            <Button Color="Color.Secondary" Clicked="() => DeleteExcercise(context)">Delete Excercise</Button>
+        </DeleteCommandTemplate>
+
+    </DataGridCommandColumn>
+
+
 </DataGrid>
 
-<Button Color="Color.Primary" Type="ButtonType.Link" To="/AddEditExcercise">Add Exercise</Button>s
+<div>
+    <h6> To add more excercises click the button below!!</h6>
+    <Button Color="Color.Primary" Type="ButtonType.Link" To="/excercise/add">Add Exercises</Button>
+</div>

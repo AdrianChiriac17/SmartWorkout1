@@ -8,6 +8,8 @@
 <DataGrid TItem="User"
           Data="@users"
           Editable
+          Filterable
+          FilterMethod="DataGridFilterMethod.StartsWith"
           Responsive>
 
     <DataGridColumn TItem="User" Field="FirstName" Caption="FirstName"> </DataGridColumn>
@@ -15,20 +17,25 @@
     <DataGridColumn TItem="User" Field="Birthday" Caption="Birthday"> </DataGridColumn> 
     <DataGridColumn TItem="User" Field="Gender" Caption="Gender"> </DataGridColumn> 
 
-    <DataGridCommandColumn TItem="User" Caption="Action" NewCommandAllowed="false">
+    <DataGridCommandColumn TItem="User" Caption="Action" >
 
         <EditCommandTemplate>
 				<Button Color="Color.Primary" Clicked="() => EditUser(context)">Edit User</Button>
+                <Button Color="Color.Primary" Clicked="() => AddWorkout(context)">Add Workout</Button>
 		</EditCommandTemplate>
 
 
         <DeleteCommandTemplate>
             <Button Color="Color.Secondary" Clicked="() => DeleteUser(context)">Delete User</Button>
         </DeleteCommandTemplate>
+       
 
     </DataGridCommandColumn>
-
-
 </DataGrid>
 
-<Button Color="Color.Primary" Type="ButtonType.Link" To="/user/add">Add User</Button>
+<div>
+    <h6> To add another click the button below!!</h6>
+    <Button Color="Color.Primary" Type="ButtonType.Link" To="/user/add">Add User</Button>
+</div>
+
+

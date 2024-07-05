@@ -15,8 +15,8 @@ namespace SmartWorkout1.DTOs
         [StringLength(70, ErrorMessage = "Last Name cannot be longer than 70 characters")]
         public string LastName { get; set; }
 
-        [Required (ErrorMessage ="Birthday is Required!")]
-        public DateTime Birthday { get; set; }
+        [Required(ErrorMessage = "Birthday is Required!")]
+        public DateTime Birthday { get; set; } = DateTime.Now;
 
         [Required (ErrorMessage ="Gender is Required!")]
         public string Gender { get; set; }

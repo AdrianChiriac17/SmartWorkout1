@@ -1,6 +1,32 @@
-﻿namespace SmartWorkout1.Components.Pages
-{
-    public class AddEditWorkout
-    {
-    }
-}
+﻿@using SmartWorkout1.Entities
+@page "/workout/add/{UserId:int}"
+@* @page "/workout/edit/{WorkoutId:int}" *@
+@rendermode InteractiveServer
+<h3>Add Or Edit Workouts</h3>
+
+<EditForm Model="@WorkoutDTO" OnValidSubmit=@SaveWorkout FormName="editForm">
+
+    @* <InputNumber @bind-Value="hidden"></InputNumber> *@
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+
+    <div class="form-group">
+        <label> Name:</label>
+        <div>
+            <InputText @bind-Value="WorkoutDTO.Name" class="form-control col-sm-3" />
+            <ValidationMessage For="@(() => WorkoutDTO.Name)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label> Date:</label>
+        <div>
+            <InputDate @bind-Value="WorkoutDTO.Date" class="form-control col-sm-3" />
+            <ValidationMessage For="@(() => WorkoutDTO.Date)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Save" />
+
+    </div>
+</EditForm>

@@ -1,4 +1,6 @@
-﻿using SmartWorkout1.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using SmartWorkout1.Context;
+using SmartWorkout1.DTOs;
 using SmartWorkout1.Entities;
 using SmartWorkout1.Repositories.Interfaces;
 
@@ -11,16 +13,50 @@ namespace SmartWorkout1.Repositories.Implementations
         {
             _context = context;
         }
-
-        public void AddExcercise(Excercise excercise)
-        {
-            _context.Excercises.Add(excercise);
-            _context.SaveChanges();
-        }
-
         public ICollection<Excercise> GetExcercises()
         {
             return _context.Excercises.ToList();
+        }
+
+        public void AddExcercise(ExcerciseDTO excerciseDTO)
+        {
+            _context.Excercises.Add(new Excercise()
+            {
+                Description=excerciseDTO.Description,
+                Type=excerciseDTO.Type
+
+            });
+            _context.SaveChanges();
+
+        }
+        public void EditExcercise(ExcerciseDTO excerciseDTO)
+        {
+            var excercise = _context.Excercises.SingleOrDefault(e => e.Id == excerciseDTO.Id);
+
+            if (excercise != null)
+            {
+                excercise.Description=excerciseDTO.Description;
+                excercise.Type = excerciseDTO.Type;
+                _context.SaveChanges();
+            }
+        }
+
+        public void DeleteExcercise(int? id)
+        {
+            if (id != null) _context.Excercises.Where(e => e.Id == id).ExecuteDelete();
+        }
+
+        public ExcerciseDTO GetById(int? id)
+        {
+            var excercise = _context.Excercises.SingleOrDefault(e => e.Id == id);
+            ExcerciseDTO excerciseDTO= new ExcerciseDTO();
+            excerciseDTO.Exist = excercise != null;
+            if (excercise != null)
+            {
+                excerciseDTO.Description = excercise.Description;
+                excerciseDTO.Type = excercise.Type;
+            }
+            return excerciseDTO;
         }
     }
 }

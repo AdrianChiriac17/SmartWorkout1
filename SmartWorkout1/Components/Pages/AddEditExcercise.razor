@@ -1,34 +1,32 @@
-﻿using Blazorise;
-using Microsoft.AspNetCore.Components.Forms;
-using System.Collections.Generic;
-
-@using SmartWorkout1.Entities
-@page "/AddEditExcercise"
+﻿@using SmartWorkout1.Entities
+@page "/excercise/add"
+@page "/excercise/edit/{ExcerciseId:int}"
+@rendermode InteractiveServer
 <h3>AddOrEdit</h3>
 
-<EditForm Model="@NewExcercise" OnValidSubmit=@SaveExcercise FormName="editForm">
+<EditForm Model="@ExcerciseDTO" OnValidSubmit=@SaveExcercise FormName="editForm">
 
     @* <InputNumber @bind-Value="hidden"></InputNumber> *@
     <DataAnnotationsValidator></DataAnnotationsValidator>
     <div class= "form-group" >
-        < label > Description:</ label >
-        <div >
-            < InputText @bind-Value = "NewExcercise.Description" class= "form-control col-sm-3" />
-            < ValidationMessage For = "@(() => NewExcercise.Description)" />
-        </div >
-    </div >
-
-    <div class= "form-group" >
-        < label > Last Name:</ label >
+        <label> Description:</label>
         <div>
-            < InputText @bind-Value = "NewExcercise.Type" class= "form-control col-sm-3" />
-            < ValidationMessage For = "@(() => NewExcercise.Type)" />
-        </div >
-    </div >
+            <InputText @bind-Value = "ExcerciseDTO.Description" class= "form-control col-sm-3" />
+            <ValidationMessage For = "@(() => ExcerciseDTO.Description)" />
+        </div>
+    </div>
 
     <div class= "form-group" >
-        < input type = "submit" class= "btn btn-primary" value = "Save" />
+        <label> Type:</label>
+        <div>
+            <InputText @bind-Value = "ExcerciseDTO.Type" class= "form-control col-sm-3" />
+            <ValidationMessage For = "@(() => ExcerciseDTO.Type)" />
+        </div>
+    </div>
+
+    <div class= "form-group" >
+        <input type = "submit" class= "btn btn-primary" value = "Save" />
     
-    </div >
-</EditForm >
+    </div>
+</EditForm>
 

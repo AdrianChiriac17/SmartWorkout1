@@ -5,7 +5,7 @@ namespace SmartWorkout1.Repositories.Interfaces
 {
     public interface IExcerciseRepository
     {
-        ICollection<Excercise> GetExcercises();
+        ICollection<ExcerciseDTO> GetExcercises();
 
         ExcerciseDTO GetById(int? id);
 

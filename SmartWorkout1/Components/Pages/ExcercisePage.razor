@@ -1,24 +1,26 @@
-﻿@using SmartWorkout1.Entities
+﻿@using SmartWorkout1.DTOs
 
 @page "/ExcercisePage"
 @rendermode InteractiveServer
 
 <h2> Excercises</h2>
 
-<DataGrid TItem="Excercise"
+<DataGrid TItem="ExcerciseDTO"
           Data="@excercises"
           Filterable
           Editable
           FilterMethod="DataGridFilterMethod.StartsWith"
           Responsive>
 
-    <DataGridColumn TItem="Excercise" Field="Description" Caption="Exercise Description"> </DataGridColumn>
-    <DataGridColumn TItem="Excercise" Field="Type" Caption="Type"> </DataGridColumn>
+    <DataGridColumn TItem="ExcerciseDTO" Field="Description" Caption="Exercise Description"> </DataGridColumn>
+    <DataGridColumn TItem="ExcerciseDTO" Field="Type" Caption="Type"> </DataGridColumn>
 
-    <DataGridCommandColumn TItem="Excercise" Caption="Action" NewCommandAllowed="false">
+    <DataGridCommandColumn TItem="ExcerciseDTO" Caption="Action" NewCommandAllowed="false">
 
         <EditCommandTemplate>
             <Button Color="Color.Primary" Clicked="() => EditExcercise(context)">Edit Excercise</Button>
+            
+
         </EditCommandTemplate>
 
 

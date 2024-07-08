@@ -14,9 +14,9 @@ namespace SmartWorkout1.Repositories.Implementations
             _context = context;
         }
 
-        public ICollection<Workout> GetWorkouts()
+        public IQueryable<Workout> GetWorkouts()
         {
-            return _context.Workouts.Include(X=>X.User).ToList();
+            return _context.Workouts.Include(X => X.User);
         }
 
         public void AddWorkout(WorkoutDTO workoutDTO)

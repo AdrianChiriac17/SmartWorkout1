@@ -13,7 +13,7 @@ namespace SmartWorkout1.DTOs
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Date is required")]
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
 
         public bool Exist { get; set; } = true;
 

@@ -1,6 +1,50 @@
-﻿namespace SmartWorkout1.Components.Pages
-{
-    public class AddEditExcerciseLog
-    {
-    }
-}
+﻿@using SmartWorkout1.Entities
+@rendermode InteractiveServer
+
+@page "/AddEditExcerciseLog"
+@page "/AddEditExcerciseLog/{workoutId:int}"
+
+<h3>Add Or Edit Excercise for this Workout</h3>
+
+<EditForm Model="@ExcerciseLogDTO" OnValidSubmit=@SaveExcerciseLog FormName="editForm">
+
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <div class="form-group">
+        <label>Reps:</label>
+        <div>
+            <NumericEdit @bind-Value="ExcerciseLogDTO.Reps" class="form-control col-sm-3" />
+            <ValidationMessage For="@(() => ExcerciseLogDTO.Reps)"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label> Duration:</label>
+        <div>
+            <NumericEdit @bind-Value="ExcerciseLogDTO.Duration" class="form-control col-sm-3" />
+            <ValidationMessage For="@(() => ExcerciseLogDTO.Duration)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label> Select Exercise to add </label>
+        <div>
+            <div class="form-group">
+                <label> Select the exercise: </label>
+                <InputSelect @bind-Value="@ExcerciseLogDTO.ExcerciseId">
+
+                    @foreach (var excercise in GetExcercises())
+                    {
+                        <option value="@excercise.Id">@excercise.Description</option>
+                    }
+                </InputSelect>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Save" />
+    </div>
+</EditForm>

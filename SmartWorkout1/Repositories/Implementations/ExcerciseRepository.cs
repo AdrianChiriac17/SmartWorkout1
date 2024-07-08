@@ -13,9 +13,15 @@ namespace SmartWorkout1.Repositories.Implementations
         {
             _context = context;
         }
-        public ICollection<Excercise> GetExcercises()
+        public ICollection<ExcerciseDTO> GetExcercises()
         {
-            return _context.Excercises.ToList();
+            return _context.Excercises.Select(DTO => new ExcerciseDTO
+            {   
+                Description = DTO.Description,
+                Id = DTO.Id,
+                Type = DTO.Type
+
+            }).ToList();
         }
 
         public void AddExcercise(ExcerciseDTO excerciseDTO)

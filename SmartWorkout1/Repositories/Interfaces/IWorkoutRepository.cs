@@ -5,7 +5,7 @@ namespace SmartWorkout1.Repositories.Interfaces
 {
     public interface IWorkoutRepository
     {
-        ICollection<Workout> GetWorkouts();
+        IQueryable<Workout> GetWorkouts();
         public void AddWorkout(WorkoutDTO workoutDTO);
 
         public void DeleteWorkout(int? id);

@@ -12,16 +12,17 @@
           FilterMethod="DataGridFilterMethod.StartsWith"
           Responsive>
 
-    <DataGridColumn TItem="User" Field="FirstName" Caption="FirstName"> </DataGridColumn>
-    <DataGridColumn TItem="User" Field="LastName" Caption="LastName"> </DataGridColumn>
+    <DataGridColumn TItem="User" Field="FirstName" Caption="First Name"> </DataGridColumn>
+    <DataGridColumn TItem="User" Field="LastName" Caption="Last Name"> </DataGridColumn>
     <DataGridColumn TItem="User" Field="Birthday" Caption="Birthday"> </DataGridColumn> 
     <DataGridColumn TItem="User" Field="Gender" Caption="Gender"> </DataGridColumn> 
 
-    <DataGridCommandColumn TItem="User" Caption="Action" >
+    <DataGridCommandColumn TItem="User" Caption="Action" NewCommandAllowed="false">
 
         <EditCommandTemplate>
 				<Button Color="Color.Primary" Clicked="() => EditUser(context)">Edit User</Button>
                 <Button Color="Color.Primary" Clicked="() => AddWorkout(context)">Add Workout</Button>
+                <Button Color="Color.Primary" Clicked="() => SeeWorkout(context)">See Workout</Button>
 		</EditCommandTemplate>
 
 

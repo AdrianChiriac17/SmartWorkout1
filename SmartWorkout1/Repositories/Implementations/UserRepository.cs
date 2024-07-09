@@ -1,4 +1,5 @@
 ﻿
+using Blazorise;
 using Microsoft.EntityFrameworkCore;
 using SmartWorkout.Repositories.Interfaces;
 using SmartWorkout1.Context;
@@ -29,6 +30,8 @@ namespace SmartWorkout1.Repositories.Implementations
                 Gender = userDTO.Gender,
                 FirstName = userDTO.FirstName,
                 LastName = userDTO.LastName,
+                Email=userDTO.Email,
+                IsTrainer = userDTO.IsTrainer,
             });
             _context.SaveChanges(); 
         }
@@ -58,6 +61,8 @@ namespace SmartWorkout1.Repositories.Implementations
                 user.LastName = userDTO.LastName;
                 user.Birthday = userDTO.Birthday;
                 user.Gender = userDTO.Gender;
+                user.Email = userDTO.Email;
+                user.IsTrainer = userDTO.IsTrainer;
                 _context.SaveChanges();
             }
         }

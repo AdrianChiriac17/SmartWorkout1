@@ -10,6 +10,7 @@
 
     @* <InputNumber @bind-Value="hidden"></InputNumber> *@
     <DataAnnotationsValidator></DataAnnotationsValidator>
+
     <div class="form-group">
         <label>First Name :</label>
         <div>
@@ -25,6 +26,23 @@
             <ValidationMessage For="@(() => UserDTO.LastName)" />
         </div>
     </div>
+
+    <div>
+        <label> Email: </label>
+        <div>
+            <InputText @bind-Value="UserDTO.Email" class="form-control col-sm-3" />
+            <ValidationMessage For="@(() => UserDTO.Email)" />
+        </div>
+    </div>
+
+
+    <div>    
+    <label>Type of user:</label>
+        <div>
+            <Check @bind-Checked="@UserDTO.IsTrainer">Trainer</Check>
+        </div>
+    </div>
+
 
     <div class="form-group">
         <label> Select your gender: </label>

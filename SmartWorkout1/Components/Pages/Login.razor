@@ -1,0 +1,46 @@
+﻿@using SmartWorkout1.Components.Layout
+@using SmartWorkout1.Entities
+@using Microsoft.AspNetCore.Components;
+@using SmartWorkout.Repositories.Interfaces;
+@using SmartWorkout1.Context;
+@using SmartWorkout1.DTOs;
+
+@rendermode InteractiveServer
+@layout NoNav
+
+@page "/"
+
+@code
+{
+	bool Failed = false;
+}
+
+<h3>LoginPage</h3>
+
+<EditForm Model="@loginDTO" OnValidSubmit=@TryLogin FormName="trylogin">
+	<div class="form-group">
+		<label>email:</label>
+		<div>
+			<InputText @bind-Value="loginDTO.Email" class="form-control col-sm-3" />
+			<ValidationMessage For="@(() =>loginDTO.Email)" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label>password (month+year):</label>
+		<div>
+			<InputText @bind-Value="loginDTO.Password" class="form-control col-sm-3" />
+			<ValidationMessage For="@(() =>loginDTO.Password)" />
+		</div>
+	</div>
+
+	<div class="form-group">
+		<input type="submit" class="btn btn-primary" value="Save" />
+	</div>
+</EditForm>
+
+<p> admin email: admin@email.com password: 012024</p>
+
+@if (Failed)
+{
+	<h4> Invalid Email or Password, try again</h4>
+}

@@ -17,12 +17,16 @@ namespace SmartWorkout1.DTOs
 
         public bool Exist { get; set; } = true;
 
+        [Required]
+        public string ImageURL { get; set; }
+
         public static ExcerciseDTO FromEntity(Excercise excercise)
         {
             return new ExcerciseDTO
             {
                 Description = excercise.Description,
-                Type = excercise.Type
+                Type = excercise.Type,
+                ImageURL=excercise.ImageURL,
             };
         }
     }

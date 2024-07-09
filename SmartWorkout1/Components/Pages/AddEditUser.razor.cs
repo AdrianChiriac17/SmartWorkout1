@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR;
 using SmartWorkout.Repositories.Interfaces;
+using SmartWorkout1.Context;
 using SmartWorkout1.DTOs;
 using SmartWorkout1.Entities;
 using SmartWorkout1.Repositories.Interfaces;
@@ -15,7 +16,10 @@ namespace SmartWorkout1.Components.Pages
         [Inject]
         private NavigationManager Navigation { get; set; }
 
-        [Parameter]
+		[Inject]
+		SmartWorkoutContext context { get; set; }
+
+		[Parameter]
         public int? UserId { get; set; }
 
 
@@ -32,7 +36,8 @@ namespace SmartWorkout1.Components.Pages
         public User User { get; set; } = new User();
         public async Task SaveUser()
         {
-            if (UserId == null)
+
+			if (UserId == null)
             {
                 UserRepository.AddUser(UserDTO);
             }

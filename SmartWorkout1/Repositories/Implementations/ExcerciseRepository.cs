@@ -19,7 +19,8 @@ namespace SmartWorkout1.Repositories.Implementations
             {   
                 Description = DTO.Description,
                 Id = DTO.Id,
-                Type = DTO.Type
+                Type = DTO.Type,
+                ImageURL= DTO.ImageURL,
 
             }).ToList();
         }
@@ -29,7 +30,8 @@ namespace SmartWorkout1.Repositories.Implementations
             _context.Excercises.Add(new Excercise()
             {
                 Description=excerciseDTO.Description,
-                Type=excerciseDTO.Type
+                Type=excerciseDTO.Type,
+                ImageURL = excerciseDTO.ImageURL,
 
             });
             _context.SaveChanges();
@@ -43,6 +45,7 @@ namespace SmartWorkout1.Repositories.Implementations
             {
                 excercise.Description=excerciseDTO.Description;
                 excercise.Type = excerciseDTO.Type;
+                excercise.ImageURL = excerciseDTO.ImageURL;
                 _context.SaveChanges();
             }
         }
@@ -61,6 +64,7 @@ namespace SmartWorkout1.Repositories.Implementations
             {
                 excerciseDTO.Description = excercise.Description;
                 excerciseDTO.Type = excercise.Type;
+                excerciseDTO.ImageURL = excercise.ImageURL;
             }
             return excerciseDTO;
         }

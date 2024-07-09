@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SmartWorkout1.DTOs;
 using SmartWorkout1.Entities;
@@ -28,6 +29,18 @@ namespace SmartWorkout1.Components.Pages
         [SupplyParameterFromForm]
         public ExcerciseDTO ExcerciseDTO { get; set; } = new ExcerciseDTO();
         public Excercise excercise { get; set; } = new Excercise();
+
+        private async Task HandleFileSelected(InputFileChangeEventArgs e)
+        {
+            var file = e.File;
+            var filePath = Path.Combine("wwwroot/images", file.Name);
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.OpenReadStream().CopyToAsync(fileStream);
+            }
+
+            ExcerciseDTO.ImageURL = $"/images/{file.Name}";
+        }
 
 
         public async Task SaveExcercise()
